@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun! 🎂</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #fff0f5;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        .card-container {
+            width: 360px;
+            height: 560px;
+            background: #ffffff;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.2);
+            border: 4px dashed #ffb6c1;
+            position: relative;
+            overflow: hidden;
+        }
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 30px 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            opacity: 0;
+            transform: translateX(100%);
+            pointer-events: none;
+        }
+        .slide.active {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: auto;
+        }
+        .slide.exit {
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+        .emoji-character {
+            font-size: 75px;
+            margin-bottom: 15px;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        h2 {
+            color: #ff4d79;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .btn {
+            background-color: #ff6699;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 102, 153, 0.3);
+            transition: transform 0.2s, background-color 0.2s;
+            font-family: inherit;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background-color: #ff3377;
+            transform: scale(1.05);
+        }
+        .btn:active {
+            transform: scale(0.95);
+        }
+        .btn-secondary {
+            background-color: #ffa4b5;
+            box-shadow: 0 5px 15px rgba(255, 164, 181, 0.3);
+        }
+        .btn-secondary:hover {
+            background-color: #ff859d;
+        }
+        /* Menu List Styling for Slide 2 */
+        .menu-list {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .menu-item {
+            background: #fff0f3;
+            border: 2px solid #ffccd5;
+            color: #ff4d79;
+            padding: 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .menu-item:hover {
+            background: #ffccd5;
+            transform: scale(1.02);
+        }
+        /* Floating background items */
+        .bg-element {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0.2;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <!-- SLIDE 1: PEMBUKA -->
+        <div class="slide active" id="slide1">
+            <div class="emoji-character">🎁</div>
+            <h2>Ada Kiriman Paket!</h2>
+            <p>Dari seseorang yang bernama <strong>Reza</strong> mengirimkan hadiah digital misterius ini khusus buat kamu yang bernama <strong>Kaluna</strong>. Penasaran kannn? yuk dibuka!</p>
+            <button class="btn" onclick="goToSlide(1, 2)">Buka Paket ✨</button>
+        </div>
+
+        <!-- SLIDE 2: MENU UTAMA (LIST) -->
+        <div class="slide" id="slide2">
+            <div class="emoji-character">🥳</div>
+            <h2>Pilih Hadiahmu!</h2>
+            <p>Aku udah nyiapin dua kejutan spesial buat hari ulang tahunmu. Mau lihat yang mana duluan?</p>
+            <div class="menu-list">
+                <button class="menu-item" onclick="goToSlide(2, 3)">
+                    <span>🌹</span> Lihat Bunga Spesial
+                </button>
+                <button class="menu-item" onclick="goToSlide(2, 4)">
+                    <span>💌</span> Baca Ucapan & Doa
+                </button>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: BUNGA MAWAR -->
+        <div class="slide" id="slide3">
+            <div class="emoji-character" style="animation-duration: 3s;">🌹</div>
+            <h2>Bunga Mawar Spesial!</h2>
+            <p style="font-size: 13.5px; text-align: justify; background: #fff5f6; padding: 12px; border-radius: 15px; border-left: 4px solid #ff4d79;">
+                <strong>Kamu tau kenapa aku memilih Bunga Mawar?</strong><br>
+                Mawar melambangkan sebuah awal yang indah, ketulusan, dan rasa kagum. Sama seperti kelopaknya yang tumbuh perlahan, mawar ini jadi simbol harapan agar perkenalan kita bisa mekar menjadi sesuatu yang indah dan menyenangkan ke depannya! maaf ya kalau masih digital bunganya (●'◡'●)
+            </p>
+            <button class="btn btn-secondary" onclick="goToSlide(3, 2)">⬅️ Kembali ke List</button>
+        </div>
+
+        <!-- SLIDE 4: UCAPAN & DOA -->
+        <div class="slide" id="slide4">
+            <div class="emoji-character" style="animation-duration: 2.5s;">🎂</div>
+            <h2>Selamat Ulang Tahun!</h2>
+            <p style="font-size: 14px; color: #444; font-style: italic; background: #fffaf0; padding: 15px; border-radius: 15px; border: 1px dashed #ffb6c1; margin-bottom: 15px;">
+                "Selamat bertambah usia! Wish you all the best yaaa. Semoga makin banyak rejeki, mimpimu bisa tercapai, Selalu Happy yaaa. Meskipun kita baru banget kenal, semoga di hari spesialmu ini kamu selalu diliputi kebahagiaan. Harapan aku, semoga ke depannya kita bisa makin cocok, makin akrab, dan bisa seru-seruan bareng lagi! Enjoy your day! 🎉"
+            </p>
+            <button class="btn btn-secondary" onclick="goToSlide(4, 2)">⬅️ Kembali ke List</button>
+        </div>
+    </div>
+
+    <!-- Elemen Dekorasi Latar Belakang -->
+    <div class="bg-element" style="top: 8%; left: 8%;">🎈</div>
+    <div class="bg-element" style="bottom: 12%; left: 10%;">✨</div>
+    <div class="bg-element" style="top: 15%; right: 10%;">🌸</div>
+    <div class="bg-element" style="bottom: 8%; right: 12%;">🎉</div>
+
+    <script>
+        function goToSlide(current, next) {
+            const currentSlide = document.getElementById('slide' + current);
+            const nextSlide = document.getElementById('slide' + next);
+
+            // Tentukan arah animasi slide
+            if (next > current) {
+                currentSlide.classList.remove('active');
+                currentSlide.classList.add('exit');
+            } else {
+                currentSlide.classList.remove('active');
+                // Jika kembali, slide tujuan muncul dari kiri ke kanan
+                nextSlide.style.transform = 'translateX(-100%)';
+            }
+            
+            setTimeout(() => {
+                currentSlide.classList.remove('exit');
+                nextSlide.style.transform = '';
+                nextSlide.classList.add('active');
+            }, 300);
+        }
+    </script>
+</body>
+</html>
